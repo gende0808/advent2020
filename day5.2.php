@@ -12,7 +12,7 @@ foreach($array as $row){
 ksort($seatArray);
 foreach($seatArray as $key => $value){
     ksort($value);
-    echo "<div class='rowCOunt'>$key</div>";
+    echo "<div class='rowCount'>$key</div>";
     echo "<div class='container'>";
     for($i = 0; $i <= 7; $i++){
         if(array_key_exists($i, $value)){
