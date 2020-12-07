@@ -22,3 +22,4 @@ function contains_any($str, array $arr){
     }
     return false;
 }
+
