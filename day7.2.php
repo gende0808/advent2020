@@ -7,7 +7,7 @@ foreach ($array as $line) {
 }
 
 checkArray($sortedArray, ["shiny gold"]);
-function checkArray($array, $searchFor, $totalBags = 0)
+function checkArray($array, $searchFor, $totalBags = 0, $accounting = [1])
 {
     $newSearchFor = array();
     if (count($searchFor) == 0) {
@@ -17,19 +17,18 @@ function checkArray($array, $searchFor, $totalBags = 0)
     foreach ($searchFor as $item) {
         foreach ($array as $bagWithBags) {
             if (strpos(trim($bagWithBags[0]), trim($item)) !== false) {
-                $count = 0;
-                for ($i = 1; $i < count($bagWithBags); $i++) {
-                    if (is_numeric($bagWithBags[0])){
-                        if(is_numeric($searchFor[0])){
-                            $count += $searchFor[0] * ;
-                        } else{
-                            $count++;
-                        }
+                for ($i = 0; $i < count($bagWithBags); $i++) {
+                    $bagBits = explode(" ",$bagWithBags[$i], 2);
+                    if(is_numeric($bagBits[0])) {
+                        array_push($newSearchFor, $bagBits[1]);
+                        array_push($accounting,$bagBits[0]);
                     }
                 }
             }
         }
     }
-//    print_array($newSearchFor);
-    checkArray($array, $newSearchFor, $totalBags);
+
+    print_array($newSearchFor);
+    print_array($accounting);
+    checkArray($array, $newSearchFor, $totalBags, $accounting);
 }
