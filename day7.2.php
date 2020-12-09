@@ -6,22 +6,21 @@ foreach ($array as $line) {
     array_push($sortedArray, preg_split("/contain |, /", str_replace([".", "bags", "bag"], "", $line)));
 }
 
-checkArray($sortedArray, ["shiny gold"]);
-function checkArray($array, $searchFor, $totalBags = 0, $accounting = [1])
+checkArray($sortedArray, ["shiny gold" => 1]);
+function checkArray($array, $searchFor, $totalBags = 0, $multiplier = 0)
 {
     $newSearchFor = array();
     if (count($searchFor) == 0) {
         echo "total: " . $totalBags;
         exit;
     }
-    foreach ($searchFor as $item) {
+    foreach ($searchFor as $item => $amount) {
         foreach ($array as $bagWithBags) {
             if (strpos(trim($bagWithBags[0]), trim($item)) !== false) {
                 for ($i = 0; $i < count($bagWithBags); $i++) {
-                    $bagBits = explode(" ",$bagWithBags[$i], 2);
-                    if(is_numeric($bagBits[0])) {
-                        array_push($newSearchFor, $bagBits[1]);
-                        array_push($accounting,$bagBits[0]);
+                    $bagBits = explode(" ", $bagWithBags[$i], 2);
+                    if (is_numeric($bagBits[0])) {
+                            $newSearchFor[trim($bagBits[1])] = $bagBits[0];
                     }
                 }
             }
@@ -29,6 +28,5 @@ function checkArray($array, $searchFor, $totalBags = 0, $accounting = [1])
     }
 
     print_array($newSearchFor);
-    print_array($accounting);
-    checkArray($array, $newSearchFor, $totalBags, $accounting);
+    checkArray($array, $newSearchFor, $totalBags, $multiplier);
 }
