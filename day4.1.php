@@ -9,7 +9,7 @@ for ($i = 0; $i < count($array); $i++) {
     for ($j = $i; strlen($array[$j]) > 2; $j++) {
         $singlePasswordData .= $array[$j];
     }
-    if (contains($singlePasswordData, $mustContain)) {
+    if (contains_any($singlePasswordData, $mustContain)) {
         $validPassports++;
     }
     $i = $j;
