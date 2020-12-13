@@ -1,10 +1,6 @@
 <?php
-include "functions.php";
 $array = explode("\n", file_get_contents("day9.txt"));
-
 $preamble = 25;
-
-
 for ($i = $preamble; $i < count($array); $i++) {
     $return = false;
     for ($j = $i - $preamble; $j < $i; $j++) {

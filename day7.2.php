@@ -1,6 +1,6 @@
 <?php
 include "functions.php";
-set_time_limit(60);
+set_time_limit(1200);
 $array = explode("\n", file_get_contents("day7.txt"));
 $GLOBALS['rules'] = array();
 $GLOBALS['TOTALCOUNT'] = 0;
@@ -16,11 +16,11 @@ array_walk_recursive($completeArray, 'letsGo');
 array_walk_recursive($completeArray, 'letsGo');
 array_walk_recursive($completeArray, 'letsGo');
 array_walk_recursive($completeArray, 'letsGo');
+array_walk_recursive($completeArray, 'letsGo');
 $amount = array_walk_recursive($completeArray, 'getCount');
 
 echo $GLOBALS['TOTALCOUNT'];
 
-print_array($completeArray);
 function getCount($value, $key)
 {
     if($value == "x"){
