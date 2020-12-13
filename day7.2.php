@@ -20,10 +20,10 @@ $amount = array_walk_recursive($completeArray, 'getCount');
 
 echo $GLOBALS['TOTALCOUNT'];
 
-//print_array($completeArray);
+print_array($completeArray);
 function getCount($value, $key)
 {
-    if($value == "counert"){
+    if($value == "x"){
         $GLOBALS['TOTALCOUNT'] += 1;
     }
 }
@@ -40,7 +40,7 @@ function letsGo(&$value, $key)
                         $value = array();
                     }
                     for ($j = 0; $j < trim($bagBits[0]); $j++) {
-                        array_push($value, array("counert"));
+                        array_push($value, array("x"));
                         array_push($value, array(trim($bagBits[1]) => trim($bagBits[0])));
                     }
                 }
